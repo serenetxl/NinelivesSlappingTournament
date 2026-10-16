@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nine Lives Slapping Championship — Newsletter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F7F3EC; --ink: #1A1410; --muted: #6B5E52; --rule: #D4C8BC;
+    --gold: #B8860B; --gold-light: #F5E8C0; --red: #8B1A1A; --red-light: #F5E0E0;
+    --green: #1A5C2E; --green-light: #DDF0E4; --cat: #C47B2B;
+  }
+  body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; }
+  .page { max-width: 700px; margin: 0 auto; padding: 48px 40px 80px; }
+  .masthead { text-align: center; padding-bottom: 28px; border-bottom: 2px solid var(--ink); }
+  .issue-line { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .title { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; line-height: 1.0; letter-spacing: -0.02em; }
+  .title em { font-style: italic; color: var(--cat); }
+  .subtitle { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: var(--muted); margin-top: 10px; }
+  .edition-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .section { margin-top: 40px; }
+  .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .section-head h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+  .section-head::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 32px; }
+  .stat-cell { background: var(--cream); padding: 16px 14px; text-align: center; }
+  .stat-cell .val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-cell .lbl { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl thead tr { border-bottom: 1.5px solid var(--ink); }
+  .tbl thead th { font-size: 9px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); padding: 0 8px 8px; text-align: left; }
+  .tbl thead th.r { text-align: right; }
+  .tbl tbody tr { border-bottom: 1px solid var(--rule); }
+  .tbl tbody tr:last-child { border-bottom: none; }
+  .tbl tbody td { padding: 9px 8px; color: var(--ink); }
+  .tbl tbody td.r { text-align: right; font-variant-numeric: tabular-nums; }
+  .tbl tbody td.muted { color: var(--muted); font-size: 12px; }
+  .rk { color: var(--muted); font-size: 11px; width: 20px; }
+  .pos { color: var(--green); font-weight: 500; }
+  .neg { color: var(--red); font-weight: 500; }
+  .name-bold { font-weight: 500; }
+  .bar-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 13px; }
+  .bar-row:last-child { border-bottom: none; }
+  .bar-name { min-width: 100px; font-weight: 500; }
+  .bar-track { flex: 1; height: 5px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 2px; }
+  .bar-pos { background: var(--green); }
+  .bar-neg { background: var(--red); }
+  .bar-val { font-variant-numeric: tabular-nums; min-width: 72px; text-align: right; font-size: 12px; }
+  .swing-grid { display: flex; flex-direction: column; gap: 10px; }
+  .swing-card { background: var(--cream); border: 0.5px solid var(--rule); border-radius: 4px; padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: start; }
+  .swing-name { font-weight: 500; font-size: 14px; }
+  .swing-amount { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; text-align: right; }
+  .swing-detail { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .swing-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .swing-pos { color: var(--green); }
+  .swing-neg { color: var(--red); }
+  .stories { display: flex; flex-direction: column; }
+  .story { padding: 20px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 48px 1fr; gap: 0 16px; }
+  .story:last-child { border-bottom: none; }
+  .story-icon { font-size: 28px; line-height: 1; padding-top: 2px; text-align: center; }
+  .story-head { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+  .story-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .story-body strong { color: var(--ink); font-weight: 500; }
+  .two-col-tables { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .col-label { font-size: 9px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1.5px solid var(--ink); }
+  .pull { border-left: 3px solid var(--cat); padding: 12px 20px; margin: 20px 0; background: rgba(196,123,43,0.06); }
+  .pull p { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: var(--ink); line-height: 1.6; }
+  .ornament { text-align: center; color: var(--rule); font-size: 18px; letter-spacing: 0.5em; margin: 36px 0; }
+  .tag { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); background: var(--gold-light); display: inline-block; padding: 2px 8px; border-radius: 2px; margin-bottom: 14px; }
+  .footer { margin-top: 52px; padding-top: 20px; border-top: 2px solid var(--ink); text-align: center; font-size: 11px; color: var(--muted); font-family: 'Playfair Display', serif; font-style: italic; }
+  .champ { display: grid; grid-template-columns: 48px 1fr auto; gap: 0 16px; align-items: center; padding: 16px; border: 0.5px solid var(--rule); border-radius: 4px; }
+  .champ.first { border: 1.5px solid var(--ink); background: var(--gold-light); }
+  .champ .medal { font-size: 28px; text-align: center; }
+  .champ .nm { font-weight: 500; font-size: 15px; }
+  .champ .blurb { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .champ .prize { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; text-align: right; }
+  .champ .place { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 2px; text-align: right; }
+  @media (max-width: 560px) {
+    .page { padding: 28px 20px 60px; } .title { font-size: 36px; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); } .two-col-tables { grid-template-columns: 1fr; }
+    .tbl { font-size: 12px; } .tbl tbody td { padding: 8px 5px; }
+    .section-head h2 { white-space: normal; font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="issue-line">Nine Lives Guild · Special Event Chronicle</div>
+    <div class="title">Nine Lives<br><em>Slapping Championship</em></div>
+    <div class="subtitle">Round 1 · Quarter-finals · Semi-finals · Final · Special Round · The one where the pot hit a million</div>
+    <div class="edition-bar">
+      <span>15 Matches · 14 Fighters</span>
+      <span>⬥ ⬥ ⬥</span>
+      <span>CATcoin Economy Report</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-cell"><div class="val">350</div><div class="lbl">Bets placed</div></div>
+      <div class="stat-cell"><div class="val">3.79M</div><div class="lbl">CC wagered</div></div>
+      <div class="stat-cell"><div class="val">1.21M</div><div class="lbl">Final pot</div></div>
+      <div class="stat-cell"><div class="val">950K</div><div class="lbl">CC borrowed</div></div>
+    </div>
+  </div>
+
+  <!-- CHAMPIONS -->
+  <div class="section">
+    <div class="section-head"><h2>Our Champions</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">Fourteen fighters, best-of-threes, best-of-fives and a best-of-seven final. These are the hands that were still slapping at the end.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+      <div class="champ first">
+        <div class="medal">🥇</div>
+        <div>
+          <div class="nm">Gaia</div>
+          <div class="blurb">Beat Feiilong, Briquette and Huangjiiii (3–0), then swept Mici <strong>4–0</strong> in the Bo7 final. Put 30,000 CC on themselves for the final — and collected.</div>
+        </div>
+        <div>
+          <div class="prize" style="color: var(--gold);">Prize TBC</div>
+          <div class="place">1st Place</div>
+        </div>
+      </div>
+      <div class="champ">
+        <div class="medal">🥈</div>
+        <div>
+          <div class="nm">Mici</div>
+          <div class="blurb">Pulled off the upset of the tournament — 3–2 over Jia Ying as an 8.56× underdog — then beat Hydego 3–1. Ran into a Gaia-shaped wall in the final.</div>
+        </div>
+        <div>
+          <div class="prize">Prize TBC</div>
+          <div class="place">2nd Place</div>
+        </div>
+      </div>
+      <div class="champ">
+        <div class="medal">🥉</div>
+        <div>
+          <div class="nm">Hydego</div>
+          <div class="blurb">Survived a 3–2 thriller against Shanks, then took bronze 3–2 over Huangjiiii — at 6.33× odds. Nobody saw it coming except nine bettors.</div>
+        </div>
+        <div>
+          <div class="prize">Prize TBC</div>
+          <div class="place">3rd Place</div>
+        </div>
+      </div>
+      <div class="champ">
+        <div class="medal" style="font-size: 22px;">4️⃣</div>
+        <div>
+          <div class="nm">Huangjiiii</div>
+          <div class="blurb">Strong in the ring — 2–0 and 3–1 wins to reach the semis. Rough at the betting table: 4 wins from 15 bets, and a −121,888 CC betting record.</div>
+        </div>
+        <div>
+          <div class="prize">Prize TBC</div>
+          <div class="place">4th Place</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="champ">
+      <div class="medal" style="font-size: 26px;">🎰</div>
+      <div>
+        <div class="nm" style="font-size: 14px;">Nishi — Top Gambler</div>
+        <div class="blurb">Three bets. Three wins. All on Gaia — 10,000 in Round 1, 69,600 in the quarters, 185,200 in the final. <strong>+279,100 CC</strong> betting profit, the best of the event by almost 100,000.</div>
+      </div>
+      <div>
+        <div class="prize" style="color: var(--green);">Prize TBC</div>
+        <div class="place">Top Gambler Prize</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- CAT SLAVES -->
+  <div class="section">
+    <div class="section-head"><h2>The Cat Slaves 🐾</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Those whose debts exceed their balance. They now owe their souls to the Cat Bank. Ranked from most to least indebted.</p>
+    <table class="tbl">
+      <thead><tr><th></th><th>Player</th><th class="r">Balance</th><th class="r">Debt</th><th class="r">Net worth</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">1</td><td class="name-bold">Huangjiiii</td><td class="r muted">0</td><td class="r muted">−120,000</td><td class="r neg">−120,000</td></tr>
+        <tr><td class="rk">2</td><td class="name-bold">Player20</td><td class="r muted">0</td><td class="r muted">−120,000</td><td class="r neg">−120,000</td></tr>
+        <tr><td class="rk">3</td><td class="name-bold">Serene</td><td class="r muted">0</td><td class="r muted">−120,000</td><td class="r neg">−120,000</td></tr>
+        <tr><td class="rk">4</td><td class="name-bold">Chion</td><td class="r muted">3,179</td><td class="r muted">−120,000</td><td class="r neg">−116,821</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">Numbs</td><td class="r muted">38,000</td><td class="r muted">−120,000</td><td class="r neg">−82,000</td></tr>
+        <tr><td class="rk">6</td><td class="name-bold">Jahbs</td><td class="r muted">88,000</td><td class="r muted">−120,000</td><td class="r neg">−32,000</td></tr>
+        <tr><td class="rk">7</td><td class="name-bold">YangKai</td><td class="r muted">4,683</td><td class="r muted">−30,000</td><td class="r neg">−25,317</td></tr>
+        <tr><td class="rk">8</td><td class="name-bold">RooZaki</td><td class="r muted">100,000</td><td class="r muted">−120,000</td><td class="r neg">−20,000</td></tr>
+      </tbody>
+    </table>
+    <div class="pull" style="margin-top: 18px;">
+      <p>Huangjiiii, Player20 and Serene are completely wiped — zero balance, 120,000 CC owed. One of them made the semi-finals. The Cat Bank does not care.</p>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- LEADERBOARD -->
+  <div class="section">
+    <div class="section-head"><h2>Final Leaderboard</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Official standings by net worth (balance minus outstanding loans and interest).</p>
+    <table class="tbl">
+      <thead><tr><th></th><th>Player</th><th class="r">Net worth</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">1</td><td class="name-bold">Nishi <span class="muted" style="font-weight:300;font-size:11px">· sponsor</span></td><td class="r pos">320,900</td></tr>
+        <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="r pos">201,936</td></tr>
+        <tr><td class="rk">3</td><td class="name-bold">Jia Ying</td><td class="r pos">142,400</td></tr>
+        <tr><td class="rk">4</td><td class="name-bold">Gaia</td><td class="r pos">91,844</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">Ogey</td><td class="r pos">65,440</td></tr>
+        <tr><td class="rk">6</td><td class="name-bold">Cabbage</td><td class="r pos">53,800</td></tr>
+        <tr><td class="rk">7</td><td class="name-bold">Mici</td><td class="r pos">50,250</td></tr>
+        <tr><td class="rk">8</td><td class="name-bold">FortunaKirana</td><td class="r pos">39,574</td></tr>
+        <tr><td class="rk">9</td><td class="name-bold">Skylleria</td><td class="r pos">25,400</td></tr>
+        <tr><td class="rk">10</td><td class="name-bold">D-Chikaru</td><td class="r pos">20,795</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- BETTING PERFORMANCE -->
+  <div class="section">
+    <div class="section-head"><h2>Betting Performance</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 10px;">Pure betting profit and loss — does not include loans, starting balance, or bonuses.</p>
+    <div class="tag">Crowd odds · min 2× · max 10×</div>
+    <div class="two-col-tables">
+      <div>
+        <div class="col-label">Biggest betting profits</div>
+        <table class="tbl">
+          <thead><tr><th></th><th>Player</th><th class="r">Bet net</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="name-bold">Nishi</td><td class="r pos">+279,100</td></tr>
+            <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="r pos">+182,091</td></tr>
+            <tr><td class="rk">3</td><td class="name-bold">Jia Ying</td><td class="r pos">+127,400</td></tr>
+            <tr><td class="rk">4</td><td class="name-bold">Ogey</td><td class="r pos">+68,440</td></tr>
+            <tr><td class="rk">5</td><td class="name-bold">Gaia</td><td class="r pos">+67,540</td></tr>
+            <tr><td class="rk">6</td><td class="name-bold">Cabbage</td><td class="r pos">+43,800</td></tr>
+            <tr><td class="rk">7</td><td class="name-bold">Mici</td><td class="r pos">+35,250</td></tr>
+            <tr><td class="rk">8</td><td class="name-bold">FortunaKirana</td><td class="r pos">+22,130</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Biggest betting losses</div>
+        <table class="tbl">
+          <thead><tr><th></th><th>Player</th><th class="r">Bet net</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="name-bold">Huangjiiii</td><td class="r neg">−121,888</td></tr>
+            <tr><td class="rk">2</td><td class="name-bold">Serene</td><td class="r neg">−118,777</td></tr>
+            <tr><td class="rk">3</td><td class="name-bold">Player20</td><td class="r neg">−112,000</td></tr>
+            <tr><td class="rk">4</td><td class="name-bold">Chion</td><td class="r neg">−111,821</td></tr>
+            <tr><td class="rk">5</td><td class="name-bold">Numbs</td><td class="r neg">−89,000</td></tr>
+            <tr><td class="rk">6</td><td class="name-bold">YangKai</td><td class="r neg">−35,615</td></tr>
+            <tr><td class="rk">7</td><td class="name-bold">Jahbs</td><td class="r neg">−34,874</td></tr>
+            <tr><td class="rk">8</td><td class="name-bold">Zia-heart</td><td class="r neg">−24,324</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- BIGGEST SINGLE PAYOUTS -->
+  <div class="section">
+    <div class="section-head"><h2>Biggest Single Payouts</h2></div>
+    <table class="tbl">
+      <thead><tr><th></th><th>Player</th><th>Match</th><th class="r">Staked</th><th class="r">Odds</th><th class="r">Net profit</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">1</td><td class="name-bold">Nishi</td><td class="muted">Final · Gaia</td><td class="r muted">185,200</td><td class="r muted">×2</td><td class="r pos">+185,200</td></tr>
+        <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="muted">Final · Gaia</td><td class="r muted">100,000</td><td class="r muted">×2</td><td class="r pos">+100,000</td></tr>
+        <tr><td class="rk">3</td><td class="name-bold">YangKai</td><td class="muted">QF-4 · Mici</td><td class="r muted">12,000</td><td class="r muted">×8.56</td><td class="r pos">+90,720</td></tr>
+        <tr><td class="rk">4</td><td class="name-bold">YangKai</td><td class="muted">Special · Feiilong</td><td class="r muted">10,000</td><td class="r muted">×10</td><td class="r pos">+90,000</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">Ogey</td><td class="muted">Final · Gaia</td><td class="r muted">77,720</td><td class="r muted">×2</td><td class="r pos">+77,720</td></tr>
+        <tr><td class="rk">6</td><td class="name-bold">Ogey</td><td class="muted">QF-4 · Mici</td><td class="r muted">10,000</td><td class="r muted">×8.56</td><td class="r pos">+75,600</td></tr>
+        <tr><td class="rk">7</td><td class="name-bold">Jia Ying</td><td class="muted">Final · Gaia</td><td class="r muted">71,200</td><td class="r muted">×2</td><td class="r pos">+71,200</td></tr>
+        <tr><td class="rk">8</td><td class="name-bold">Nishi</td><td class="muted">QF-2 · Gaia</td><td class="r muted">69,600</td><td class="r muted">×2</td><td class="r pos">+69,600</td></tr>
+        <tr><td class="rk">9</td><td class="name-bold">Briquette</td><td class="muted">SF-1 · Gaia</td><td class="r muted">40,000</td><td class="r muted">×2.45</td><td class="r pos">+58,000</td></tr>
+      </tbody>
+    </table>
+    <div class="pull" style="margin-top: 18px;">
+      <p>The big money backed the champion. But the sharpest bets of the event were tiny: YangKai turned 12,000 CC into 90,720 on the QF-4 upset, then 10,000 into 90,000 in the Special Round.</p>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- BIGGEST LOSSES -->
+  <div class="section">
+    <div class="section-head"><h2>Biggest Single Losses</h2></div>
+    <table class="tbl">
+      <thead><tr><th></th><th>Player</th><th>Match</th><th>Picked</th><th class="r">Lost</th></tr></thead>
+      <tbody>
+        <tr><td class="rk">1</td><td class="name-bold">YangKai</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−200,000</td></tr>
+        <tr><td class="rk">2</td><td class="name-bold">Chion</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−120,000</td></tr>
+        <tr><td class="rk">3</td><td class="name-bold">Ogey</td><td class="muted">Special Round</td><td class="muted">Gaia</td><td class="r neg">−81,000</td></tr>
+        <tr><td class="rk">4</td><td class="name-bold">Player20</td><td class="muted">Special Round</td><td class="muted">Gaia</td><td class="r neg">−80,000</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">YangKai</td><td class="muted">SF-1</td><td class="muted">Huangjiiii</td><td class="r neg">−70,000</td></tr>
+        <tr><td class="rk">6</td><td class="name-bold">Serene</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−70,000</td></tr>
+        <tr><td class="rk">7</td><td class="name-bold">RooZaki</td><td class="muted">QF-4</td><td class="muted">Jia Ying</td><td class="r neg">−64,000</td></tr>
+        <tr><td class="rk">8</td><td class="name-bold">RooZaki</td><td class="muted">R1-5</td><td class="muted">Chion</td><td class="r neg">−58,600</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- HIGH ROLLERS -->
+  <div class="section">
+    <div class="section-head"><h2>The High Rollers</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Total CC put at stake across all rounds. Green = net positive, red = net negative.</p>
+    <div class="bar-row"><div class="bar-name">YangKai</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:100%"></div></div><div class="bar-val neg">431,387 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Serene</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:80%"></div></div><div class="bar-val neg">344,331 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Ogey</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:76%"></div></div><div class="bar-val pos">329,230 CC</div></div>
+    <div class="bar-row"><div class="bar-name">RooZaki</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:66%"></div></div><div class="bar-val neg">285,600 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Numbs</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:64%"></div></div><div class="bar-val neg">277,099 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Nishi</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:61%"></div></div><div class="bar-val pos">264,800 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Chion</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:56%"></div></div><div class="bar-val neg">243,010 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Mojo</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:43%"></div></div><div class="bar-val pos">184,000 CC</div></div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- WIN RATES -->
+  <div class="section">
+    <div class="section-head"><h2>Win Rates</h2></div>
+    <div class="two-col-tables">
+      <div>
+        <div class="col-label">Sharpest bettors (min. 3 bets)</div>
+        <table class="tbl">
+          <thead><tr><th>Player</th><th class="r">W / L</th><th class="r">Rate</th></tr></thead>
+          <tbody>
+            <tr><td class="name-bold">Nishi</td><td class="r muted">3 / 0</td><td class="r pos">100%</td></tr>
+            <tr><td class="name-bold">Jia Ying</td><td class="r muted">5 / 2</td><td class="r pos">71%</td></tr>
+            <tr><td class="name-bold">Yoru</td><td class="r muted">9 / 5</td><td class="r pos">64%</td></tr>
+            <tr><td class="name-bold">Mojo</td><td class="r muted">5 / 3</td><td class="r pos">62%</td></tr>
+            <tr><td class="name-bold">Chion</td><td class="r muted">10 / 7</td><td class="r pos">59%</td></tr>
+            <tr><td class="name-bold">RooZaki</td><td class="r muted">5 / 4</td><td class="r pos">56%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Least sharp (min. 3 bets)</div>
+        <table class="tbl">
+          <thead><tr><th>Player</th><th class="r">W / L</th><th class="r">Rate</th></tr></thead>
+          <tbody>
+            <tr><td class="name-bold">Huangjiiii</td><td class="r muted">4 / 11</td><td class="r neg">27%</td></tr>
+            <tr><td class="name-bold">Jahbs</td><td class="r muted">4 / 8</td><td class="r neg">33%</td></tr>
+            <tr><td class="name-bold">Player20</td><td class="r muted">2 / 4</td><td class="r neg">33%</td></tr>
+            <tr><td class="name-bold">Numbs</td><td class="r muted">7 / 12</td><td class="r neg">37%</td></tr>
+            <tr><td class="name-bold">FortunaKirana</td><td class="r muted">8 / 12</td><td class="r neg">40%</td></tr>
+            <tr><td class="name-bold">Serene</td><td class="r muted">5 / 7</td><td class="r neg">42%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="pull" style="margin-top: 18px;">
+      <p>Chion won 10 of 17 bets — the fifth-best record of the event — and still finished 111,821 CC down. Win rate isn't everything when one of the losses is 120,000 CC.</p>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- COMEBACKS & DOWNFALLS -->
+  <div class="section">
+    <div class="section-head"><h2>Greatest Climbs</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Biggest rise from a low point to a later peak in betting profit.</p>
+    <div class="swing-grid">
+      <div class="swing-card">
+        <div class="swing-name">Nishi</div>
+        <div class="swing-amount swing-pos">+279,100</div>
+        <div class="swing-detail">Never dipped once. Three bets on Gaia, each one bigger than the last, each one a winner. The cleanest run of the event.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">Briquette</div>
+        <div class="swing-amount swing-pos">+182,091</div>
+        <div class="swing-detail">Spent most of the event placing tidy 1,000 CC bets — including a 10× win on themselves in Round 1. Then went big when it mattered: 40,000 on Gaia in the semis (+58,000) and 100,000 on Gaia in the final (+100,000).</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">YangKai</div>
+        <div class="swing-amount swing-pos">+143,836</div>
+        <div class="swing-detail">Hit rock bottom at −179,451 CC after the final. Then backed Hydego for bronze (+53,300) and Feiilong in the Special Round (+90,000 on a 10,000 bet). Clawed all the way back to −35,615 CC. Not a happy ending — but a fighting one.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">Ogey</div>
+        <div class="swing-amount swing-pos">+151,440</div>
+        <div class="swing-detail">Dipped to −2,000 CC after Round 1, then hit 75,600 on Mici's QF-4 upset and 77,720 on Gaia in the final. Peaked at +149,440 CC before the Special Round took an 81,000 CC bite.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 28px;">
+    <div class="section-head"><h2>Greatest Downfalls</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Biggest drop from a peak to a later low in betting profit.</p>
+    <div class="swing-grid">
+      <div class="swing-card">
+        <div class="swing-name">YangKai</div>
+        <div class="swing-amount swing-neg">−295,000</div>
+        <div class="swing-detail">Riding high at +115,549 CC after the QF-4 upset. Then lost 70,000 on Huangjiiii in SF-1, 25,000 on Hydego in SF-2 — and 200,000 on Mici in the final, the biggest single bet of the event. Gaia won 4–0. Low point: −179,451 CC.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">Serene</div>
+        <div class="swing-amount swing-neg">−170,554</div>
+        <div class="swing-detail">Peaked at +51,777 CC after a big 57,777 win on Mici in the semis. Then lost 70,000 on Mici in the final, 50,554 on Huangjiiii for bronze and 50,000 on Gaia in the Special Round. Final net: −118,777 CC.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">Player20</div>
+        <div class="swing-amount swing-neg">−151,450</div>
+        <div class="swing-detail">Up +39,450 CC after backing Gaia in the semis. Then Hydego (−45,000), Mici in the final (−26,450) and Gaia in the Special Round (−80,000). Final net: −112,000 CC.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+      <div class="swing-card">
+        <div class="swing-name">Chion</div>
+        <div class="swing-amount swing-neg">−144,990</div>
+        <div class="swing-detail">Built up to +31,000 CC with two winning bets on Mici in the semis. Then doubled down on Mici for the final — 120,000 and 25,000 — and lost both. Final net: −111,821 CC.</div>
+        <div class="swing-label">swing magnitude</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- STORYLINES -->
+  <div class="section">
+    <div class="section-head"><h2>The Stories That Defined the Championship</h2></div>
+    <div class="stories">
+
+      <div class="story">
+        <div class="story-icon">👑</div>
+        <div>
+          <div class="story-head">The Million-Coin Final</div>
+          <div class="story-body">The biggest match in CatCoins history. <strong>31 bets, 1,210,449 CC</strong> on the table — 638,131 on Gaia, 572,318 on Mici. Almost a coin flip. Then Gaia won <strong>4–0</strong>. Nishi collected +185,200, Briquette +100,000. On the other side: YangKai −200,000, Chion −120,000, Serene −70,000. A best-of-seven that didn't need more than four.</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-icon">💥</div>
+        <div>
+          <div class="story-head">The Upset of the Tournament</div>
+          <div class="story-body">QF-4: Jia Ying vs Mici. Only <strong>12% of the pot</strong> was on Mici. Mici won 3–2 at <strong>8.56×</strong>. YangKai turned 12,000 into +90,720. Ogey turned 10,000 into +75,600. RooZaki lost 64,000, Numbs 57,322 — and Jia Ying, who backed themselves with 20,000, lost that too.</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-icon">🔁</div>
+        <div>
+          <div class="story-head">The Champion Gets Slapped</div>
+          <div class="story-body">After the final came a Special Round: <strong>Feiilong vs Gaia</strong> — a rematch of Round 1, which Gaia won 2–0. This time Feiilong won 3–1 at the <strong>10× cap</strong>. Only six bets were right. YangKai's 10,000 became +90,000. Ogey lost 81,000, Player20 80,000, Serene 50,000. Revenge, served cold.</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-icon">🔟</div>
+        <div>
+          <div class="story-head">Briquette: Bet on Yourself</div>
+          <div class="story-body">Round 1, Jahbs vs Briquette. Only <strong>9% of the pot</strong> was on Briquette. Jahbs put 14,860 on themselves. Briquette put 1,000 on themselves — and won 2–1 at <strong>10×</strong>. Five winning bets, including Serene and Gaia. Briquette went on to finish the event with the second-highest net worth in the guild: <strong>201,936 CC</strong>.</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-icon">🎢</div>
+        <div>
+          <div class="story-head">YangKai: The Rollercoaster</div>
+          <div class="story-body">Most bets of anyone (<strong>35</strong>). Most CC staked (<strong>431,387</strong>). Two of the four biggest wins of the event — and the single biggest loss. Peaked at +115,549, fell to −179,451 after the final, then clawed back 143,836 in the bronze match and the Special Round. Final net: −35,615 CC. Exhausting just to read.</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-icon">🪙</div>
+        <div>
+          <div class="story-head">Zia-heart: Down to the Last 2 CC</div>
+          <div class="story-body">Backed themselves three times in Round 1 — 2,000, then 13,000, then 5,652 — and lost to Mici 2–0. Later bet <strong>1 CC</strong> on Mici in the semis and won exactly 1 CC. Finished the event with a balance of <strong>2 CC</strong>. Every coin counts.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornament">· · · · ·</div>
+
+  <!-- ODDS & ENDS -->
+  <div class="section">
+    <div class="section-head"><h2>Odds &amp; Ends</h2></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td class="name-bold">Biggest pot</td><td class="r">1,210,449 CC</td><td class="muted r">The Final — 31 bets</td></tr>
+        <tr><td class="name-bold">Most popular match</td><td class="r">R1-6</td><td class="muted r">Mici vs Zia-heart — 37 bets</td></tr>
+        <tr><td class="name-bold">Biggest single bet</td><td class="r neg">200,000 CC</td><td class="muted r">YangKai on Mici in the Final — lost</td></tr>
+        <tr><td class="name-bold">Best odds landed</td><td class="r pos">×10</td><td class="muted r">Briquette (Round 1) &amp; Feiilong (Special Round)</td></tr>
+        <tr><td class="name-bold">Crowd's best call</td><td class="r">QF-1</td><td class="muted r">Hydego vs Shanks — 20 of 33 bets won</td></tr>
+        <tr><td class="name-bold">Perfect record</td><td class="r">Nishi</td><td class="muted r">3W / 0L — all on Gaia</td></tr>
+        <tr><td class="name-bold">Smallest winning bet</td><td class="r">1 CC</td><td class="muted r">Zia-heart (SF-2) — net +1 CC 😂</td></tr>
+        <tr><td class="name-bold">Cat Bank lending</td><td class="r">950,075 CC</td><td class="muted r">Borrowed by 15 players</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>Nine Lives Slapping Championship · Special Event Chronicle · All CATcoin figures are final</p>
+    <p style="margin-top: 6px; font-size: 10px; font-style: normal; letter-spacing: 0.1em; text-transform: uppercase;">May your slaps land like Gaia's next time 🐾</p>
+  </div>
+
+</div>
+</body>
+</html>
