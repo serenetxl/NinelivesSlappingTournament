@@ -78,6 +78,7 @@
   .champ .blurb { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .champ .prize { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; text-align: right; }
   .champ .place { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 2px; text-align: right; }
+  @media (max-width: 560px) { .champ { grid-template-columns: 40px 1fr; } .champ > div:nth-child(3) { grid-column: 2; margin-top: 8px; } .champ .prize, .champ .place { text-align: left; } }
   @media (max-width: 560px) {
     .page { padding: 28px 20px 60px; } .title { font-size: 36px; }
     .stat-strip { grid-template-columns: repeat(2, 1fr); } .two-col-tables { grid-template-columns: 1fr; }
@@ -93,7 +94,7 @@
   <div class="masthead">
     <div class="issue-line">Nine Lives Guild · Special Event Chronicle</div>
     <div class="title">Nine Lives<br><em>Slapping Championship</em></div>
-    <div class="subtitle">Round 1 · Quarter-finals · Semi-finals · Final · Special Round · The one where the pot hit a million</div>
+    <div class="subtitle">Round 1 · Quarter-finals · Semi-finals · Special Round · Finals · The one where the pot hit a million</div>
     <div class="edition-bar">
       <span>15 Matches · 14 Fighters</span>
       <span>⬥ ⬥ ⬥</span>
@@ -121,11 +122,11 @@
         <div class="medal">🥇</div>
         <div>
           <div class="nm">Gaia</div>
-          <div class="blurb">Beat Feiilong, Briquette and Huangjiiii (3–0), then swept Mici <strong>4–0</strong> in the Bo7 final. Put 30,000 CC on themselves for the final — and collected.</div>
+          <div class="blurb">Beat Feiilong, Briquette and Huangjiiii to reach the final. Lost the fan-voted Special Round to Feiilong — then swept Mici <strong>4–0</strong> in the Bo7 final anyway. Put 30,000 CC on themselves for the final — and collected.</div>
         </div>
         <div>
-          <div class="prize" style="color: var(--gold);">Prize TBC</div>
-          <div class="place">1st Place</div>
+          <div class="prize" style="color: var(--gold);">2,580 Pearls skin</div>
+          <div class="place">1st Place · from Feiilong</div>
         </div>
       </div>
       <div class="champ">
@@ -135,8 +136,8 @@
           <div class="blurb">Pulled off the upset of the tournament — 3–2 over Jia Ying as an 8.56× underdog — then beat Hydego 3–1. Ran into a Gaia-shaped wall in the final.</div>
         </div>
         <div>
-          <div class="prize">Prize TBC</div>
-          <div class="place">2nd Place</div>
+          <div class="prize">1,280 Pearls skin</div>
+          <div class="place">2nd Place · from Gunbae</div>
         </div>
       </div>
       <div class="champ">
@@ -146,8 +147,8 @@
           <div class="blurb">Survived a 3–2 thriller against Shanks, then took bronze 3–2 over Huangjiiii — at 6.33× odds. Nobody saw it coming except nine bettors.</div>
         </div>
         <div>
-          <div class="prize">Prize TBC</div>
-          <div class="place">3rd Place</div>
+          <div class="prize">Monthly Fund</div>
+          <div class="place">3rd Place · from Nishiora</div>
         </div>
       </div>
       <div class="champ">
@@ -157,21 +158,46 @@
           <div class="blurb">Strong in the ring — 2–0 and 3–1 wins to reach the semis. Rough at the betting table: 4 wins from 15 bets, and a −121,888 CC betting record.</div>
         </div>
         <div>
-          <div class="prize">Prize TBC</div>
           <div class="place">4th Place</div>
         </div>
       </div>
     </div>
 
-    <div class="champ">
-      <div class="medal" style="font-size: 26px;">🎰</div>
-      <div>
-        <div class="nm" style="font-size: 14px;">Nishi — Top Gambler</div>
-        <div class="blurb">Three bets. Three wins. All on Gaia — 10,000 in Round 1, 69,600 in the quarters, 185,200 in the final. <strong>+279,100 CC</strong> betting profit, the best of the event by almost 100,000.</div>
+    <div class="section-head" style="margin-top: 8px;"><h2>Top Gamblers</h2></div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">Ranked by final net worth. Nishi (320,900 CC) and Gaia (91,844 CC) finished in the top four but gave their gambling prizes away — so the prizes move down the table.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="champ first">
+        <div class="medal">🎰</div>
+        <div>
+          <div class="nm">Briquette</div>
+          <div class="blurb">31 bets, mostly tidy 1,000 CC ones — including a 10× win on themselves in Round 1. Then went big on Gaia in the semis and the final. <strong>201,936 CC</strong> net worth.</div>
+        </div>
+        <div>
+          <div class="prize" style="color: var(--gold);">Premium Battle Pass</div>
+          <div class="place">1st Gambler · from Gaia</div>
+        </div>
       </div>
-      <div>
-        <div class="prize" style="color: var(--green);">Prize TBC</div>
-        <div class="place">Top Gambler Prize</div>
+      <div class="champ">
+        <div class="medal">🥈</div>
+        <div>
+          <div class="nm">Jia Ying</div>
+          <div class="blurb">Only 7 bets, 5 wins, zero debt. Backed themselves to win Round 1, then put 71,200 on Gaia in the final. <strong>142,400 CC</strong> net worth.</div>
+        </div>
+        <div>
+          <div class="prize">Elite Battle Pass</div>
+          <div class="place">2nd Gambler · from Cozmo</div>
+        </div>
+      </div>
+      <div class="champ">
+        <div class="medal">🥉</div>
+        <div>
+          <div class="nm">Ogeypeko</div>
+          <div class="blurb">Called Mici's QF-4 upset at 8.56× (+75,600) and Gaia in the final (+77,720). Survived an 81,000 CC hit in the Special Round. <strong>65,440 CC</strong> net worth.</div>
+        </div>
+        <div>
+          <div class="prize">300 Echo Beads</div>
+          <div class="place">3rd Gambler · from Villya</div>
+        </div>
       </div>
     </div>
   </div>
@@ -213,7 +239,7 @@
         <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="r pos">201,936</td></tr>
         <tr><td class="rk">3</td><td class="name-bold">Jia Ying</td><td class="r pos">142,400</td></tr>
         <tr><td class="rk">4</td><td class="name-bold">Gaia</td><td class="r pos">91,844</td></tr>
-        <tr><td class="rk">5</td><td class="name-bold">Ogey</td><td class="r pos">65,440</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">Ogeypeko</td><td class="r pos">65,440</td></tr>
         <tr><td class="rk">6</td><td class="name-bold">Cabbage</td><td class="r pos">53,800</td></tr>
         <tr><td class="rk">7</td><td class="name-bold">Mici</td><td class="r pos">50,250</td></tr>
         <tr><td class="rk">8</td><td class="name-bold">FortunaKirana</td><td class="r pos">39,574</td></tr>
@@ -239,7 +265,7 @@
             <tr><td class="rk">1</td><td class="name-bold">Nishi</td><td class="r pos">+279,100</td></tr>
             <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="r pos">+182,091</td></tr>
             <tr><td class="rk">3</td><td class="name-bold">Jia Ying</td><td class="r pos">+127,400</td></tr>
-            <tr><td class="rk">4</td><td class="name-bold">Ogey</td><td class="r pos">+68,440</td></tr>
+            <tr><td class="rk">4</td><td class="name-bold">Ogeypeko</td><td class="r pos">+68,440</td></tr>
             <tr><td class="rk">5</td><td class="name-bold">Gaia</td><td class="r pos">+67,540</td></tr>
             <tr><td class="rk">6</td><td class="name-bold">Cabbage</td><td class="r pos">+43,800</td></tr>
             <tr><td class="rk">7</td><td class="name-bold">Mici</td><td class="r pos">+35,250</td></tr>
@@ -278,8 +304,8 @@
         <tr><td class="rk">2</td><td class="name-bold">Briquette</td><td class="muted">Final · Gaia</td><td class="r muted">100,000</td><td class="r muted">×2</td><td class="r pos">+100,000</td></tr>
         <tr><td class="rk">3</td><td class="name-bold">YangKai</td><td class="muted">QF-4 · Mici</td><td class="r muted">12,000</td><td class="r muted">×8.56</td><td class="r pos">+90,720</td></tr>
         <tr><td class="rk">4</td><td class="name-bold">YangKai</td><td class="muted">Special · Feiilong</td><td class="r muted">10,000</td><td class="r muted">×10</td><td class="r pos">+90,000</td></tr>
-        <tr><td class="rk">5</td><td class="name-bold">Ogey</td><td class="muted">Final · Gaia</td><td class="r muted">77,720</td><td class="r muted">×2</td><td class="r pos">+77,720</td></tr>
-        <tr><td class="rk">6</td><td class="name-bold">Ogey</td><td class="muted">QF-4 · Mici</td><td class="r muted">10,000</td><td class="r muted">×8.56</td><td class="r pos">+75,600</td></tr>
+        <tr><td class="rk">5</td><td class="name-bold">Ogeypeko</td><td class="muted">Final · Gaia</td><td class="r muted">77,720</td><td class="r muted">×2</td><td class="r pos">+77,720</td></tr>
+        <tr><td class="rk">6</td><td class="name-bold">Ogeypeko</td><td class="muted">QF-4 · Mici</td><td class="r muted">10,000</td><td class="r muted">×8.56</td><td class="r pos">+75,600</td></tr>
         <tr><td class="rk">7</td><td class="name-bold">Jia Ying</td><td class="muted">Final · Gaia</td><td class="r muted">71,200</td><td class="r muted">×2</td><td class="r pos">+71,200</td></tr>
         <tr><td class="rk">8</td><td class="name-bold">Nishi</td><td class="muted">QF-2 · Gaia</td><td class="r muted">69,600</td><td class="r muted">×2</td><td class="r pos">+69,600</td></tr>
         <tr><td class="rk">9</td><td class="name-bold">Briquette</td><td class="muted">SF-1 · Gaia</td><td class="r muted">40,000</td><td class="r muted">×2.45</td><td class="r pos">+58,000</td></tr>
@@ -300,7 +326,7 @@
       <tbody>
         <tr><td class="rk">1</td><td class="name-bold">YangKai</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−200,000</td></tr>
         <tr><td class="rk">2</td><td class="name-bold">Chion</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−120,000</td></tr>
-        <tr><td class="rk">3</td><td class="name-bold">Ogey</td><td class="muted">Special Round</td><td class="muted">Gaia</td><td class="r neg">−81,000</td></tr>
+        <tr><td class="rk">3</td><td class="name-bold">Ogeypeko</td><td class="muted">Special Round</td><td class="muted">Gaia</td><td class="r neg">−81,000</td></tr>
         <tr><td class="rk">4</td><td class="name-bold">Player20</td><td class="muted">Special Round</td><td class="muted">Gaia</td><td class="r neg">−80,000</td></tr>
         <tr><td class="rk">5</td><td class="name-bold">YangKai</td><td class="muted">SF-1</td><td class="muted">Huangjiiii</td><td class="r neg">−70,000</td></tr>
         <tr><td class="rk">6</td><td class="name-bold">Serene</td><td class="muted">Final</td><td class="muted">Mici</td><td class="r neg">−70,000</td></tr>
@@ -318,7 +344,7 @@
     <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Total CC put at stake across all rounds. Green = net positive, red = net negative.</p>
     <div class="bar-row"><div class="bar-name">YangKai</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:100%"></div></div><div class="bar-val neg">431,387 CC</div></div>
     <div class="bar-row"><div class="bar-name">Serene</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:80%"></div></div><div class="bar-val neg">344,331 CC</div></div>
-    <div class="bar-row"><div class="bar-name">Ogey</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:76%"></div></div><div class="bar-val pos">329,230 CC</div></div>
+    <div class="bar-row"><div class="bar-name">Ogeypeko</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:76%"></div></div><div class="bar-val pos">329,230 CC</div></div>
     <div class="bar-row"><div class="bar-name">RooZaki</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:66%"></div></div><div class="bar-val neg">285,600 CC</div></div>
     <div class="bar-row"><div class="bar-name">Numbs</div><div class="bar-track"><div class="bar-fill bar-neg" style="width:64%"></div></div><div class="bar-val neg">277,099 CC</div></div>
     <div class="bar-row"><div class="bar-name">Nishi</div><div class="bar-track"><div class="bar-fill bar-pos" style="width:61%"></div></div><div class="bar-val pos">264,800 CC</div></div>
@@ -387,14 +413,14 @@
       </div>
       <div class="swing-card">
         <div class="swing-name">YangKai</div>
-        <div class="swing-amount swing-pos">+143,836</div>
-        <div class="swing-detail">Hit rock bottom at −179,451 CC after the final. Then backed Hydego for bronze (+53,300) and Feiilong in the Special Round (+90,000 on a 10,000 bet). Clawed all the way back to −35,615 CC. Not a happy ending — but a fighting one.</div>
+        <div class="swing-amount swing-pos">+165,725</div>
+        <div class="swing-detail">Dipped to −1,340 CC in Round 1. Landed 12,000 on Mici's QF-4 upset at 8.56× (+90,720), survived a rough semis, then hit Feiilong in the Special Round (+90,000) and Hydego for bronze (+53,300). Peaked at +164,385 CC — right before the final.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
       <div class="swing-card">
-        <div class="swing-name">Ogey</div>
-        <div class="swing-amount swing-pos">+151,440</div>
-        <div class="swing-detail">Dipped to −2,000 CC after Round 1, then hit 75,600 on Mici's QF-4 upset and 77,720 on Gaia in the final. Peaked at +149,440 CC before the Special Round took an 81,000 CC bite.</div>
+        <div class="swing-name">Ogeypeko</div>
+        <div class="swing-amount swing-pos">+129,110</div>
+        <div class="swing-detail">Dipped to −5,000 CC in Round 1, then hit 75,600 on Mici's QF-4 upset and 43,500 on Gaia in the semis. Peaked at +124,110 CC. The Special Round took 81,000 — then Gaia in the final paid 77,720 back.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
     </div>
@@ -406,26 +432,26 @@
     <div class="swing-grid">
       <div class="swing-card">
         <div class="swing-name">YangKai</div>
-        <div class="swing-amount swing-neg">−295,000</div>
-        <div class="swing-detail">Riding high at +115,549 CC after the QF-4 upset. Then lost 70,000 on Huangjiiii in SF-1, 25,000 on Hydego in SF-2 — and 200,000 on Mici in the final, the biggest single bet of the event. Gaia won 4–0. Low point: −179,451 CC.</div>
+        <div class="swing-amount swing-neg">−200,000</div>
+        <div class="swing-detail">Walked into the grand final at +164,385 CC. Put 200,000 on Mici — the biggest single bet of the event. Gaia won 4–0. One bet, one match, and it was all gone. Final net: −35,615 CC.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
       <div class="swing-card">
         <div class="swing-name">Serene</div>
         <div class="swing-amount swing-neg">−170,554</div>
-        <div class="swing-detail">Peaked at +51,777 CC after a big 57,777 win on Mici in the semis. Then lost 70,000 on Mici in the final, 50,554 on Huangjiiii for bronze and 50,000 on Gaia in the Special Round. Final net: −118,777 CC.</div>
+        <div class="swing-detail">Peaked at +51,777 CC after a big 57,777 win on Mici in the semis. Then lost 50,000 on Gaia in the Special Round, 50,554 on Huangjiiii for bronze and 70,000 on Mici in the final. Final net: −118,777 CC.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
       <div class="swing-card">
         <div class="swing-name">Player20</div>
         <div class="swing-amount swing-neg">−151,450</div>
-        <div class="swing-detail">Up +39,450 CC after backing Gaia in the semis. Then Hydego (−45,000), Mici in the final (−26,450) and Gaia in the Special Round (−80,000). Final net: −112,000 CC.</div>
+        <div class="swing-detail">Up +39,450 CC after backing Gaia in the semis. Then Hydego (−45,000), Gaia in the Special Round (−80,000) and Mici in the final (−26,450). Final net: −112,000 CC.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
       <div class="swing-card">
         <div class="swing-name">Chion</div>
-        <div class="swing-amount swing-neg">−144,990</div>
-        <div class="swing-detail">Built up to +31,000 CC with two winning bets on Mici in the semis. Then doubled down on Mici for the final — 120,000 and 25,000 — and lost both. Final net: −111,821 CC.</div>
+        <div class="swing-amount swing-neg">−145,000</div>
+        <div class="swing-detail">Built up to +33,169 CC with two winning bets on Mici in the semis and a small win on Hydego for bronze. Then doubled down on Mici for the final — 120,000 and 25,000 — and lost both. Final net: −111,821 CC.</div>
         <div class="swing-label">swing magnitude</div>
       </div>
     </div>
@@ -450,7 +476,7 @@
         <div class="story-icon">💥</div>
         <div>
           <div class="story-head">The Upset of the Tournament</div>
-          <div class="story-body">QF-4: Jia Ying vs Mici. Only <strong>12% of the pot</strong> was on Mici. Mici won 3–2 at <strong>8.56×</strong>. YangKai turned 12,000 into +90,720. Ogey turned 10,000 into +75,600. RooZaki lost 64,000, Numbs 57,322 — and Jia Ying, who backed themselves with 20,000, lost that too.</div>
+          <div class="story-body">QF-4: Jia Ying vs Mici. Only <strong>12% of the pot</strong> was on Mici. Mici won 3–2 at <strong>8.56×</strong>. YangKai turned 12,000 into +90,720. Ogeypeko turned 10,000 into +75,600. RooZaki lost 64,000, Numbs 57,322 — and Jia Ying, who backed themselves with 20,000, lost that too.</div>
         </div>
       </div>
 
@@ -458,7 +484,7 @@
         <div class="story-icon">🔁</div>
         <div>
           <div class="story-head">The Champion Gets Slapped</div>
-          <div class="story-body">After the final came a Special Round: <strong>Feiilong vs Gaia</strong> — a rematch of Round 1, which Gaia won 2–0. This time Feiilong won 3–1 at the <strong>10× cap</strong>. Only six bets were right. YangKai's 10,000 became +90,000. Ogey lost 81,000, Player20 80,000, Serene 50,000. Revenge, served cold.</div>
+          <div class="story-body">Before the finals came the Special Round — the matchup the guild voted to see: <strong>Feiilong vs Gaia</strong>, a rematch of Round 1, which Gaia won 2–0. This time Feiilong won 3–1 at the <strong>10× cap</strong>. Only six bets were right. YangKai's 10,000 became +90,000. Ogeypeko lost 81,000, Player20 80,000, Serene 50,000. Gaia's answer? Win the final 4–0.</div>
         </div>
       </div>
 
@@ -474,7 +500,7 @@
         <div class="story-icon">🎢</div>
         <div>
           <div class="story-head">YangKai: The Rollercoaster</div>
-          <div class="story-body">Most bets of anyone (<strong>35</strong>). Most CC staked (<strong>431,387</strong>). Two of the four biggest wins of the event — and the single biggest loss. Peaked at +115,549, fell to −179,451 after the final, then clawed back 143,836 in the bronze match and the Special Round. Final net: −35,615 CC. Exhausting just to read.</div>
+          <div class="story-body">Most bets of anyone (<strong>35</strong>). Most CC staked (<strong>431,387</strong>). Two of the four biggest wins of the event — and the single biggest loss. Lost 95,000 in the semis, then won it all back and more — 90,000 in the Special Round and 53,300 on Hydego for bronze — to peak at +164,385. Then 200,000 on Mici in the final. Final net: −35,615 CC. Exhausting just to read.</div>
         </div>
       </div>
 
